@@ -1,0 +1,120 @@
+#Original Author: Bibhuprasad Mahakud
+#Purdue University, West Lafayette, USA
+
+####    Name of tree    #####
+treeName_sig="tree"
+treeName_bkg="tree"
+treeName_data="tree"
+#
+
+#provide path from /store/..
+FileInlxplusEOS="No" 
+
+#Provide path from /eos/uscms/store/..
+FileInlpcEOS="Yes"
+
+Path="/eos/cms/store/user/cheidegg/samples/signals/"
+
+fileLocation_sig="/eos/cms/store/user/cheidegg/samples/signals/"
+fileLocation_bkg="/eos/cms/store/user/cheidegg/samples/bkg/"
+fileLocation_data="/eos/cms/store/user/cheidegg/samples/bkg/"
+#
+####incase you are putting xrootrd path below put the filelocation above without xrootdpath
+store_mc_sig ="root://eoscms.cern.ch//store/user/cheidegg/samples/signals/"
+store_mc_bkg ="root://eoscms.cern.ch//store/user/cheidegg/samples/bkg/"
+store_data ="root://eoscms.cern.ch//store/user/cheidegg/samples/data/"
+#
+#
+#####    Name of samples #####
+#
+#
+list_mc_sig = ["","TChiWZ_225_135.root","TChiWZ_200_150.root","TChiWZ_600_300.root"]
+list_mc_sigNames =["TChiWZ_Var","TChiWZ_225_135","TChiWZ_200_150","TChiWZ_600_300"]
+sig_cuts=[]
+list_mc_sigNames_cuts ={"TChiWZ_Var":sig_cuts,"TChiWZ_225_135":sig_cuts,"TChiWZ_200_150":sig_cuts,"TChiWZ_600_300":sig_cuts}
+#
+#
+#
+list_mc_bkg = ["WZTo3LNu_amcatnlo.root","DYJetsToLL_M50.root","DYJetsToLL_M10to50.root","TTJets_DiLepton.root","TTJets_SingleLeptonFromT.root","TTJets_SingleLeptonFromTbar.root", "TTJets_DiLepton_ext.root", "WJetsToLNu.root", "ZZTo4L.root","GGHZZ4L.root", "ZZZ.root","WZZ.root", "WWW.root", "tZW_ll.root", "TTZToLLNuNu.root","WGToLNuG.root","ZGTo2LG.root", "WWG.root","TTGJets.root","WZG.root","TGJets.root"]
+
+list_mc_bkgNames = ['WZTo3LNu', 'DYJetsToLL_M50', 'DYJetsToLL_M10to50', 'TTJets_DiLepton', 'TTJets_SingleLeptonFromT', 'TTJets_SingleLeptonFromTbar', 'TTJets_DiLepton_ext', 'WJetsToLNu', 'ZZTo4L', 'GGHZZ4L', 'ZZZ', 'WZZ',  'WWW', 'tZW_ll', 'TTZToLLNuNu', 'WGToLNuG', 'ZGTo2LG', 'WWG', 'TTGJets', 'WZG', 'TGJets']
+
+bkg_cuts=[]
+list_mc_bkgNames_cuts ={"WZTo3LNu":[],"DYJetsToLL_M50":bkg_cuts,"DYJetsToLL_M10to50":bkg_cuts,"TTJets_DiLepton":[], 'TTJets_SingleLeptonFromT':bkg_cuts, 'TTJets_SingleLeptonFromTbar':bkg_cuts, 'TTJets_DiLepton_ext':bkg_cuts, 'WJetsToLNu':bkg_cuts, 'ZZTo4L':bkg_cuts, 'GGHZZ4L':bkg_cuts, 'ZZZ':bkg_cuts, 'WZZ':bkg_cuts, 'WWW':bkg_cuts, 'tZW_ll':bkg_cuts, 'TTZToLLNuNu':bkg_cuts, 'WGToLNuG':bkg_cuts, 'ZGTo2LG':bkg_cuts, 'WWG':bkg_cuts, 'TTGJets':bkg_cuts, 'WZG':bkg_cuts, 'TGJets':bkg_cuts}
+
+
+#
+#
+#
+list_data = ["WZTo3LNu.root"]
+list_dataNames = ["Data"]
+data_cuts=[]
+list_dataNames_cuts ={"Data":data_cuts}
+
+
+#double and integer values
+#one value per event type variables, names should be same as exactly in the tree , code wll create histograms for these
+
+
+list_oneVariables=["met_pt","mllL_3l", "mTL_3l", "htJet30j_Mini", "UserDef_2016Bins", "UserDef_2016MllBins", "UserDef_2016MllBinsv2"]
+
+list_VarsFill=["met_pt","mllL_3l","mTL_3l", "htJet30j_Mini", "UserDef_2016Bins", "UserDef_2016MllBins", "UserDef_2016MllBinsv2" ]
+
+list_VarsTreeCat=["readN","readF2","readF2", "readF1", "UserDef_2016Bins", "UserDef_2016MllBins","UserDef_2016MllBinsv2" ]
+
+list_Baseline_cuts = ["readF2.nLepSel==3 &&", "readF2.LepSel_isTight[0] && readF2.LepSel_isTight[1] && readF2.LepSel_isTight[2] &&", "abs(readF2.LepSel_pdgId[0]) < 15 && abs(readF2.LepSel_pdgId[1]) < 15 && abs(readF2.LepSel_pdgId[2]) < 15 && readF2.nOSSF_3l >= 1 &&","abs(readF2.m3L-91.) > 15 &&","readF2.LepSel_pt[0] >= (20 + 5*(abs(readF2.LepSel_pdgId[0])==11)) && readF2.LepSel_pt[1] >= (10 + 5*(abs(readF2.LepSel_pdgId[1])==11)) && readF2.LepSel_pt[2] >= (10 + 0*(abs(readF2.LepSel_pdgId[3])==11)) &&","readF1.nBJetMedium25_Mini ==0 &&","(readF1.minMllSFOS_Mini == -1 || readF1.minMllSFOS_Mini > 12) &&","readN.met_pt>50.0"]
+
+
+list_Categories =["Basic","BasicPlus"];
+
+
+Usedefcategories="Yes"
+#No
+
+
+list_defCategories = ["readN.met_pt > 50","readN.met_pt > 50 && readF2.mllL_3l >12."]
+
+
+
+
+
+
+#Def_UserDef_All=["TLorentzVector Jet1=read.Jet0->at(0);TLorentzVector Jet2=read.Jet1->at(0);TLorentzVector RSG=Jet1+Jet2;double RSGPt=RSG.Pt();return RSGPt;","TLorentzVector Jet1=read.Jet0->at(0);TLorentzVector Jet2=read.Jet1->at(0);TLorentzVector RSG=Jet1+Jet2;double RSGMass=RSG.M();return RSGMass;","TLorentzVector Jet1=read.Jet0->at(0);TLorentzVector Jet2=read.Jet1->at(0);double DeltaR=Jet1.DeltaR(Jet2);return DeltaR;","TLorentzVector Jet1=read.Jet0->at(0);TLorentzVector Jet2=read.Jet1->at(0);double DeltaEta=Jet1.Eta()-Jet2.Eta();return DeltaEta;","TLorentzVector Jet1=read.Jet0->at(0);TLorentzVector Jet2=read.Jet1->at(0);double DeltaPhi=Jet1.Eta()-Jet2.Phi();return DeltaPhi;","return 1;","return 1;","return 1;","return 1;"]
+
+
+Def_UserDef_All=["double mTW=readF2.mTL_3l;double MET=readN.met_pt;double Mll=readF2.mllL_3l;return HelperClass::Binning2016(mTW, MET, Mll);"," double mTW=readF2.mTL_3l;double MET=readN.met_pt;double Mll=readF2.mllL_3l;return HelperClass::Binning2016Mll(mTW, MET, Mll);","double mTW=readF2.mTL_3l;double MET=readN.met_pt;double Mll=readF2.mllL_3l;return HelperClass::Binning2016Mllv2(mTW, MET, Mll);"]
+
+
+
+list_UserDef_Var1_range=[-100,0,100]
+
+list_nLepGood20_range=[0,1,2,3,4,5,6,7,8,9,10]
+
+list_htJet40_range = [0,40,50,70,100,150,200,300,400,500,600,700,800,900,1000,1100,1200,1500,2000]
+
+
+
+list_met_pt_range = [50.0 ,  60.0 ,  70.0 ,  80.0 ,  90.0 ,  100.0 ,  110.0 ,  120.0 ,  130.0 ,  140.0 ,  150.0 ,  160.0 ,  170.0 ,  180.0 ,  190.0 ,  200.0 ,  210.0 ,  220.0 ,  230.0 ,  240.0 ,  250.0 ,  260.0 ,  270.0 ,  280.0 ,  290.0 ,  300.0 ,  310.0 ,  320.0 ,  330.0 ,  340.0 ,  350.0 ,  360.0 ,  370.0 ,  380.0 ,  390.0 ,  400.0 ,  410.0 ,  420.0 ,  430.0 ,  440.0 ,  450.0 ,  460.0 ,  470.0 ,  480.0 ,  490.0 ,  500.0 ,  510.0 ,  520.0 ,  530.0 ,  540.0 ,  550.0 ,  560.0 ,  570.0 ,  580.0 ,  590.0 ,  600.0 ,  610.0 ,  620.0 ,  630.0 ,  640.0 ,  650.0 ,  660.0 ,  670.0 ,  680.0 ,  690.0 ,  700.0 ,  710.0 ,  720.0 ,  730.0 ,  740.0 ,750]
+
+list_mllL_3l_range = [0.0 ,  3.0 ,  6.0 ,  9.0 ,  12.0 ,  15.0 ,  18.0 ,  21.0 ,  24.0 ,  27.0 ,  30.0 ,  33.0 ,  36.0 ,  39.0 ,  42.0 ,  45.0 ,  48.0 ,  51.0 ,  54.0 ,  57.0 ,  60.0 ,  63.0 ,  66.0 ,  69.0 ,  72.0 ,  75.0 ,  78.0 ,  81.0 ,  84.0 ,  87.0 ,  90.0 ,  93.0 ,  96.0 ,  99.0 ,  102.0 ,  105.0 ,  108.0 ,  111.0 ,  114.0 ,  117.0 ,  120.0 ,  123.0 ,  126.0 ,  129.0 ,  132.0 ,  135.0 ,  138.0 ,  141.0 ,  144.0 ,  147.0 ,  150.0 ,  153.0 ,  156.0 ,  159.0 ,  162.0 ,  165.0 ,  168.0 ,  171.0 ,  174.0 ,  177.0 ,  180.0 ,  183.0 ,  186.0 ,  189.0 ,  192.0 ,  195.0 ,  198.0 ,  201.0 ,  204.0 ,  207.0 ,210.]
+
+list_mTL_3l_range = [0.0 ,  5.0 ,  10.0 ,  15.0 ,  20.0 ,  25.0 ,  30.0 ,  35.0 ,  40.0 ,  45.0 ,  50.0 ,  55.0 ,  60.0 ,  65.0 ,  70.0 ,  75.0 ,  80.0 ,  85.0 ,  90.0 ,  95.0 ,  100.0 ,  105.0 ,  110.0 ,  115.0 ,  120.0 ,  125.0 ,  130.0 ,  135.0 ,  140.0 ,  145.0 ,  150.0 ,  155.0 ,  160.0 ,  165.0 ,  170.0 ,  175.0 ,  180.0 ,  185.0 ,  190.0 ,  195.0 ,  200.0 ,  205.0 ,  210.0 ,  215.0 ,  220.0 ,  225.0 ,  230.0 ,  235.0 ,  240.0 ,  245.0 ,  250.0 ,  255.0 ,  260.0 ,  265.0 ,  270.0 ,  275.0 ,  280.0 ,  285.0 ,  290.0 ,  295.0 ,300.]
+
+
+list_htJet30j_Mini_range = [0.0 ,  15.0 ,  30.0 ,  45.0 ,  60.0 ,  75.0 ,  90.0 ,  105.0 ,  120.0 ,  135.0 ,  150.0 ,  165.0 ,  180.0 ,  195.0 ,  210.0 ,  225.0 ,  240.0 ,  255.0 ,  270.0 ,  285.0 ,  300.0 ,  315.0 ,  330.0 ,  345.0 ,  360.0 ,  375.0 ,  390.0 ,  405.0 ,  420.0 ,  435.0 ,  450.0 ,  465.0 ,  480.0 ,  495.0 ,  510.0 ,  525.0 ,  540.0 ,  555.0 ,  570.0 ,  585.0 ,  600.0 ,  615.0 ,  630.0 ,  645.0 ,  660.0 ,  675.0 ,  690.0 ,  705.0 ,  720.0 ,  735.0 ,  750.0 ,  765.0 ,  780.0 ,  795.0 ,  810.0 ,  825.0 ,  840.0 ,  855.0 ,  870.0 ,  885.0 ,  900.0 ,  915.0 ,  930.0 ,  945.0 ,  960.0 ,  975.0 ,  990.0 ,  1005.0 ,  1020.0 ,  1035.0 ,  1050.0 ,  1065.0 ,  1080.0 ,  1095.0 ,  1110.0 ,  1125.0 ,  1140.0 ,  1155.0 ,  1170.0 ,  1185.0 ,  1200.0 ,  1215.0 ,  1230.0 ,  1245.0 ,  1260.0 ,  1275.0 ,  1290.0 ,  1305.0 ,  1320.0 ,  1335.0 ,  1350.0 ,  1365.0 ,  1380.0 ,  1395.0 ,  1410.0 ,  1425.0 ,  1440.0 ,  1455.0 ,  1470.0 ,  1485.0 ,1500.]
+
+list_UserDef_2016Bins_range =[1.0 ,  2.0 ,  3.0 ,  4.0 ,  5.0 ,  6.0 ,  7.0 ,  8.0 ,  9.0 ,  10.0 ,  11.0 ,  12.0 ,  13.0 ,  14.0 ,  15.0 ,  16.0 ,  17.0 ,  18.0 ,  19.0 ,  20.0 ,  21.0 ,  22.0 ,  23.0 ,  24.0 ,  25.0 ,  26.0 ,  27.0 ,  28.0 ,  29.0 ,  30.0 ,  31.0 ,  32.0 ,  33.0 ,  34.0 ,  35.0 ,  36.0 ,  37.0 ,  38.0 ,  39.0 ,  40.0 ,  41.0 ,  42.0 ,  43.0 ,44.0, 45.0]
+
+list_UserDef_2016MllBins_range =[1.0 ,  2.0 ,  3.0 ,  4.0 ,  5.0 ,  6.0 ,  7.0 ,  8.0 ,  9.0 ,  10.0 ,  11.0 ,  12.0 ,  13.0 ,  14.0 ,  15.0 ,  16.0 ,  17.0 ,  18.0 ,  19.0 ,  20.0 ,  21.0 ,  22.0 ,  23.0 ,  24.0 ,  25.0 ,  26.0 ,  27.0 ,  28.0 ,  29.0 ,  30.0 ,  31.0 ,  32.0 ,  33.0 ,  34.0 ,  35.0 ,  36.0 ,  37.0 ,  38.0 ,  39.0 ,  40.0 ,  41.0 ,  42.0 ,  43.0 ,  44.0 ,  45.0 ,  46.0 ,  47.0 ,  48.0 ,  49.0 ,  50.0 ,  51.0 ,  52.0 ,  53.0 ,  54.0 ,  55.0 ,  56.0 ,  57.0 ,  58.0 ,  59.0 ,  60.0 ,  61.0 ,  62.0 ,  63.0 ,  64.0 ,  65.0 ,  66.0 ,  67.0 ,  68.0 ,  69.0 ,  70.0 ,  71.0 ,  72.0 ,  73.0 ,  74.0 ,75.0,76.0]
+
+list_UserDef_2016MllBinsv2_range =[1.0 ,  2.0 ,  3.0 ,  4.0 ,  5.0 ,  6.0 ,  7.0 ,  8.0 ,  9.0 ,  10.0 ,  11.0 ,  12.0 ,  13.0 ,  14.0 ,  15.0 ,  16.0 ,  17.0 ,  18.0 ,  19.0 ,  20.0 ,  21.0 ,  22.0 ,  23.0 ,  24.0 ,  25.0 ,  26.0 ,  27.0 ,  28.0 ,  29.0 ,  30.0 ,  31.0 ,  32.0 ,  33.0 ,  34.0 ,  35.0 ,  36.0 ,  37.0 ,  38.0 ,  39.0 ,  40.0 ,  41.0 ,  42.0 ,  43.0 ,  44.0 ,  45.0 ,  46.0 ,  47.0 ,  48.0 ,  49.0 ,  50.0 ,  51.0 ,  52.0 ,  53.0 ,  54.0 ,  55.0 ,  56.0 ,  57.0 ,  58.0 ,  59.0 ,  60.0 ,  61.0 ,  62.0 ,  63.0 ,  64.0 ,  65.0 ,  66.0 ,  67.0 ,  68.0 ,  69.0 ,  70.0 ,  71.0 ,  72.0 ,  73.0 ,  74.0 ,75.0,76.0]
+
+
+#list_oneVariables=["met_pt","mllL_3l", "mTL_3l", "htJet30j_Mini", "UserDef_2016Bins", "UserDef_2016MllBins", "UserDef_2016MllLMETBins"]
+
+
+
+Weights='double xsecWeights[26]={1, 0.0222277, 0.037621, 0.00043166559, 0.000401486861, 0.207951450379, 0.460855740514, 0.014326866279, 0.0152358451117, 0.00377437306283, 0.00358579395652, 2.56057182096, 0.000215117852384, 1.39966740576e-05,5.60911903128e-05, 0.000225486223663, 0.000869166666667, 0.0002246, 0.000129987612885, 0.0959726859573, 0.00913537470343, 0.000214828897338, 0.000848001908406, 4.13043478261e-05, 0.0101433123197, 1 };'
+
+
+
